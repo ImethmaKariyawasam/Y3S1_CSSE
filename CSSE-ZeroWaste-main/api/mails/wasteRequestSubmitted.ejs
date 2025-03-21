@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Request Submission - Waste Zero</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #4CAF50;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .content {
+            padding: 20px;
+            color: #333333;
+        }
+        .footer {
+            text-align: center;
+            color: #888888;
+            padding: 20px 0;
+            font-size: 12px;
+        }
+        .payment-required {
+            color: #FF0000; /* Red for required payment */
+            font-weight: bold;
+        }
+        .payment-not-required {
+            color: #4CAF50; /* Green for no payment required */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <h1>Waste Request Submitted</h1>
+        </div>
+        <div class="content">
+            <p>Dear <%= name %>,</p>
+            <p>Your waste request for <strong><%= wasteCategory %></strong> has been successfully submitted.</p>
+            <p>Details:</p>
+            <ul>
+                <li><strong>Quantity:</strong> <%= quantity %> kg</li>
+                <li><strong>Estimated Price:</strong> LKR <%= estimatedPrice %></li>
+                <li><strong>Pick-Up Date:</strong> <%= pickUpDate %></li>
+                <li><strong>Payment Due Date:</strong> <%= paymentDueDate %></li>
+            </ul>
+
+            <% if (isPaymentRequired === 'Payment is required.') { %>
+                <p class="payment-required">Payment is required for this waste request. Please make the payment before the due date.</p>
+            <% } else { %>
+                <p class="payment-not-required">No payment is required for this waste request. We will process it without any charges.</p>
+            <% } %>
+
+            <p>We will notify you once a driver has been assigned to your request.</p>
+        </div>
+        <div class="footer">
+            <p>This is an automated message, please do not reply to this email.</p>
+        </div>
+    </div>
+</body>
+</html>
